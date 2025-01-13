@@ -22,3 +22,12 @@ unit_zero = do
     zero 5 5 @?= SparseMatrix 5 5 (Data.Map.fromList ([]::[((Int, Int), Int)]))
     where zz :: Int; zz = 0
 
+unit_multiply = do
+    let matrix1 = from2list [[1, 2], [3, 4], [3, 4], [3, 4]] :: [[Int]]
+    let matrix2 = from2list [[5, 6, 9], [7, 8, 10]] :: [[Int]]
+    let res = from2list [[19, 22, 29], [43, 50, 67], [43, 50, 67], [43, 50, 67]] :: [[Int]]
+    multiplyMatrix matrix1 matrix2 @?= res
+
+unit_det = do
+    let matrix1 = from2list [[1, 2, 5], [3, 4, 12], [3, 4, 6]] :: [[Int]]
+    determinant matrix1 @?= 12
